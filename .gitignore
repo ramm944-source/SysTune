@@ -1,0 +1,13 @@
+﻿node_modules/
+.env*
+dist/
+out/
+.next/
+build/
+*.log
+*.pem
+*.key
+__pycache__/
+*.pyc
+test_*/
+*.exe
