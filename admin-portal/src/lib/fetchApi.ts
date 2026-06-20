@@ -4,15 +4,9 @@ export async function fetchApi(endpoint: string, options: RequestInit = {}) {
   const url = `${baseUrl}${endpoint}`;
 
   try {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('systune_admin_token') : null;
-    
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
     };
-    
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
     
     // Safely merge options.headers
     if (options.headers) {
