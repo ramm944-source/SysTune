@@ -117,7 +117,7 @@ export default {
           }
         }
 
-        const cookieDeleteHeader = `__Secure-AdminToken=; HttpOnly; Secure; SameSite=Strict; Path=/api/admin; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+        const cookieDeleteHeader = `__Secure-AdminToken=; HttpOnly; Secure; SameSite=None; Path=/api/admin; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
         if (token) {
           const decoded = await verifyJWT(token, JWT_SECRET);
@@ -167,7 +167,7 @@ export default {
           headers: { 
             ...corsHeaders, 
             "Content-Type": "application/json",
-            "Set-Cookie": `__Secure-AdminToken=${token}; HttpOnly; Secure; SameSite=Strict; Path=/api/admin; Max-Age=86400`
+            "Set-Cookie": `__Secure-AdminToken=${token}; HttpOnly; Secure; SameSite=None; Path=/api/admin; Max-Age=86400`
           } 
         });
       } catch (err) {
