@@ -81,7 +81,8 @@ export default {
       "http://localhost:3000"
     ];
     const incomingOrigin = request.headers.get("Origin") || "";
-    const corsOrigin = allowedOrigins.includes(incomingOrigin) ? incomingOrigin : "null";
+    const isPagesDev = incomingOrigin.endsWith(".pages.dev");
+    const corsOrigin = (allowedOrigins.includes(incomingOrigin) || isPagesDev) ? incomingOrigin : "null";
 
     const corsHeaders = {
       "Access-Control-Allow-Origin": corsOrigin,
