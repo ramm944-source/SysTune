@@ -162,7 +162,7 @@ export default {
         }
 
         const token = await signJWT({ role: "admin", exp: Math.floor(Date.now() / 1000) + (24 * 3600) }, JWT_SECRET);
-        return new Response(JSON.stringify({ status: "success" }), { 
+        return new Response(JSON.stringify({ status: "success", token: token }), { 
           status: 200, 
           headers: { 
             ...corsHeaders, 
