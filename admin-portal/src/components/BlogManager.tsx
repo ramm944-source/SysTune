@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { fetchApi } from '../lib/fetchApi';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { systuneLogBank } from '../lib/systuneLogBank';
 
 const fetcher = async (url: string) => {
   const data = await fetchApi(url);
@@ -92,6 +93,11 @@ export default function BlogManager() {
     } finally {
       setIsSavingKw(false);
     }
+  };
+
+  const handleImportSmartKeywords = () => {
+    const smartKeywords = systuneLogBank.map((item) => item.target_keyword).join('\n');
+    setKwBank(smartKeywords);
   };
 
   const handleForceGenerate = async () => {
@@ -440,6 +446,12 @@ export default function BlogManager() {
               className="mt-4 w-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] hover:border-cyan-500/50 text-zinc-200 text-sm font-medium py-3 rounded-xl transition-all"
             >
               {isSavingKw ? 'Syncing...' : 'Save Keyword Bank to Cloud'}
+            </button>
+            <button
+              onClick={handleImportSmartKeywords}
+              className="mt-2 w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-medium py-3 rounded-xl transition-all"
+            >
+              🧠 Import Smart Keywords from Log Bank
             </button>
           </div>
 

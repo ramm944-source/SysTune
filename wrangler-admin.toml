@@ -1,0 +1,8 @@
+name = "systune-admin"
+main = "systune-admin-worker.js"
+compatibility_date = "2024-03-20"
+
+# Bind the KV Storage used by the worker
+[[kv_namespaces]]
+binding = "SYSTUNE_STORE"
+id = "1869c18b37ca4a1882c77feffafba8ad"
